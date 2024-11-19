@@ -1,6 +1,8 @@
+
+import {useEffect, useState} from "react";
 import {ProductCard} from "./components/ProductCard";
 
-const products = [
+const defaultValue = [
   {
     id: 0,
     name: "Product 1",
@@ -18,15 +20,37 @@ const products = [
   }
 ]
 
+// function App() {
+//   return (
+//     <div>
+//       {
+//         products.map((product) => 
+//           <ProductCard data={product} />
+//         )}
+//     </div>
+//   );
+// }
+
+
 function App() {
+
+  const [products, setProducts] = useState(defaultValue);
+
+
+  useEffect(()=> {
+    console.log("Component updated!")
+  }, []);
+
+
   return (
     <div>
-      {
-        products.map((product) => 
+      <button onClick ={() => setProducts([])}>Click</button>
+      {products.map((product) => 
           <ProductCard data={product} />
         )}
     </div>
   );
 }
+
 
 export default App;
